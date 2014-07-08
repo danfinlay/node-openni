@@ -372,8 +372,6 @@ namespace nodeopenni {
 
     printf("initiated poll thread.\n");
 
-    status = this->gesture_generator_.AddGesture("Click",this->boundingBox_);
-    status = this->gesture_generator_.AddGesture("Wave",this->boundingBox_);
     if (hasError(status)) return error("registering gesture", status);
 
     status = this->context_.StartGeneratingAll();

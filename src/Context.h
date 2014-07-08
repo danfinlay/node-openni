@@ -18,13 +18,13 @@ namespace nodeopenni {
 
 
   struct JointPos {
-    void * context;    
+    void * context;
     const char * joint;
     Persistent<String> jointName;
     XnVector3D pos;
     uint user;
     bool firing;
-  };  
+  };
 
   struct OpenNIError {
     const char * contextMessage;
@@ -50,7 +50,7 @@ namespace nodeopenni {
   class Context : ObjectWrap {
 
     public:
-      
+
       bool running_;
       xn::UserGenerator userGenerator_;
 
@@ -68,7 +68,7 @@ namespace nodeopenni {
       void RemoveUser(uint userId);
 
     private:
-      
+
       xn::Context context_;
       xn::GestureGenerator gesture_generator_;
       XnCallbackHandle userCallbackHandle_;
@@ -77,11 +77,11 @@ namespace nodeopenni {
       XnCallbackHandle calibrationCallbackHandle_;
       XnCallbackHandle jointConfigurationHandle_;
       XnCallbackHandle gestureCallbackHandle_;
-      
+
 
       JointPos jointPositions_[NODE_OPENNI_MAX_USERS][NODE_OPENNI_JOINT_COUNT] ;
       OpenNIError lastError_;
-      
+
       uv_thread_t event_thread_;
       uv_async_t  uv_async_joint_change_callback_[NODE_OPENNI_MAX_USERS][NODE_OPENNI_JOINT_COUNT];
       uv_async_t  uv_async_error_callback_;
